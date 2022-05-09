@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:food_ordering_app/constants.dart';
+
+class CategoryItem extends StatelessWidget {
+  final String title;
+  final bool isActive;
+  final VoidCallback press;
+  const CategoryItem({
+    Key? key,
+    required this.title,
+    this.isActive = false,
+    required this.press,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      child: Column(
+        children: [
+          Text(
+            title,
+            style: isActive
+                ? const TextStyle(
+                    color: kTextColor,
+                    fontWeight: FontWeight.bold,
+                  )
+                : const TextStyle(fontSize: 12),
+          ),
+          if (isActive)
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 3),
+              height: 3,
+              width: 22,
+              decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
